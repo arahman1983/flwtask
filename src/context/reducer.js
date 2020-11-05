@@ -3,7 +3,6 @@ const employeeReducer = (state = [], action) => {
     case "ADD_EMPLOYEE":
       return [...state, action.employee];
     case "CHANGE_EMPLOYEE_STATE":
-      console.log(action)
       return state.map(employee => {
         if(employee.id === action.id){
           return {

@@ -1,0 +1,39 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "name": "Abdelrahman Elhussiny",
+      "stateID": 4
+    },
+    {
+      "id": 2,
+      "name": "Ahmed Said",
+      "stateID": 3
+    },
+    {
+      "id": 3,
+      "name": "Jon Smith",
+      "stateID": 2
+    },
+    {
+      "id": 4,
+      "name": "Liza Paterson",
+      "stateID": 4
+    },
+    {
+      "id": 5,
+      "name": "Naser Saad",
+      "stateID": 1
+    },
+    {
+      "id": 6,
+      "name": "Tamer Moesi",
+      "stateID": 5
+    },
+    {
+      "name": "sadasd sadasd",
+      "stateID": 1,
+      "id": 7
+    }
+  ]
+}

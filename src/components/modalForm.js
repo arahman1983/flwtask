@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Modal } from "react-bootstrap";
 import { EmployeesCtx } from "../context/context";
 import { addEmployee } from "../context/actions";
+import { addEmployeeFn } from "../api";
 
 export default function FormModal({ handleHide, show }) {
   const [employeeName, setEmployeeName] = useState("");
@@ -23,12 +24,18 @@ export default function FormModal({ handleHide, show }) {
       setNameValid(false);
       return;
     }
-    ///// logic to add employee to the server
-    dispatchEmployeesArray(addEmployee({
-      id: EmployeesArray.length + 1,
-      name : employeeName,
-      stateID: 1
-    }))
+    ///// logic to add employee to the
+    let employee = { name: employeeName, stateID: 1 } 
+    addEmployeeFn(employee).then((data) =>
+      dispatchEmployeesArray(
+        addEmployee({
+          id: data.id,
+          name: employeeName,
+          stateID: 1,
+        })
+      )
+    );
+
     setEmployeeName("");
     handleHide();
   };
