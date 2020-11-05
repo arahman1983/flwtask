@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { StateComp } from "./";
+import { EmployeesCtx } from "../context/context";
+import { editEmployee } from "../context/actions";
 
-export default function EmployeeStateComp() {
+export default function EmployeeStateComp({employee}) {
+  const {dispatchEmployeesArray} = useContext(EmployeesCtx)
 
   let empState = [
     { id: 1, label: "ADDED", activeClass: 'btn-secondary'},
@@ -11,15 +14,18 @@ export default function EmployeeStateComp() {
     { id: 5, label: "INACTIVE", activeClass: 'btn-danger'},
   ];
 
-  const [activeId, setActiveId] = useState(1);
 
   /// change state logic
-  const onChangeState = (id) => setActiveId(id);
+  const onChangeState = (id) => {
+    dispatchEmployeesArray(editEmployee(employee.id, {
+      stateID: id
+    }))
+  };
 
   return (
     <ul className="list-group list-group-horizontal-lg justify-content-end">
       {empState.map((status, index) => (
-        <StateComp key={index} status={status} activeId = {activeId} onChangeState={onChangeState}/>
+        <StateComp key={index} status={status} activeId = {employee.stateID} onChangeState={onChangeState}/>
       ))}
     </ul>
   );
