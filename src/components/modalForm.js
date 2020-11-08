@@ -7,7 +7,7 @@ import { addEmployeeFn } from "../api";
 export default function FormModal({ handleHide, show }) {
   const [employeeName, setEmployeeName] = useState("");
   const [nameValid, setNameValid] = useState(true);
-  const { EmployeesArray, dispatchEmployeesArray } = useContext(EmployeesCtx);
+  const { dispatchEmployeesArray } = useContext(EmployeesCtx);
 
   const handleClose = () => {
     setEmployeeName("");

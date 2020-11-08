@@ -7,7 +7,8 @@ import employeeReducer from './context/reducer'
 import {setEmployees} from './context/actions'
 
 function App() { 
-  const [EmployeesArray, dispatchEmployeesArray] = useReducer(employeeReducer, []);
+//  const [EmployeesArray, dispatchEmployeesArray] = useReducer(employeeReducer, []);
+const [EmployeesArray, dispatchEmployeesArray] = useReducer(employeeReducer, [])
 
   useEffect(() => {
     getAllEmployees().then(data => dispatchEmployeesArray(setEmployees(data)))
