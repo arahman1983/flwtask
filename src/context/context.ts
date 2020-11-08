@@ -1,3 +1,9 @@
+import { Action, Employee } from './reducer';
 import { createContext } from "react";
 
-export const EmployeesCtx = createContext({});
+type Ctx = {
+  EmployeesArray:Employee[] , 
+  dispatchEmployeesArray: React.Dispatch<Action>
+}
+
+export const EmployeesCtx = createContext<Ctx>({EmployeesArray:[], dispatchEmployeesArray:()=>null});

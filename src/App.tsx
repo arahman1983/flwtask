@@ -7,7 +7,6 @@ import employeeReducer from './context/reducer'
 import {setEmployees} from './context/actions'
 
 function App() { 
-//  const [EmployeesArray, dispatchEmployeesArray] = useReducer(employeeReducer, []);
 const [EmployeesArray, dispatchEmployeesArray] = useReducer(employeeReducer, [])
 
   useEffect(() => {
@@ -16,7 +15,7 @@ const [EmployeesArray, dispatchEmployeesArray] = useReducer(employeeReducer, [])
 
   return (
     <div className="row py-md-5 mx-0 bg-light h-100">
-      <EmployeesCtx.Provider value={{EmployeesArray, dispatchEmployeesArray}}>
+      <EmployeesCtx.Provider value={{EmployeesArray: EmployeesArray || [], dispatchEmployeesArray}}>
         <div className="col-lg-8 col-md-10 col-12 mx-auto">
           <FlwHeader />
           <div className="w-100 h-100 bg-white p-3">

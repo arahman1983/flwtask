@@ -1,10 +1,10 @@
 import { Employee } from './reducer';
-export const addEmployee = (employee:Object) => ({
+export const addEmployee = (employee:Employee) => ({
   type: "ADD_EMPLOYEE",
   employee,
 });
 
-export const editEmployee = (id:Number, employee:Object) => ({
+export const editEmployee = (id:Number, employee:Employee) => ({
   type: "CHANGE_EMPLOYEE_STATE",
   id,
   employee,

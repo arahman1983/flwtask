@@ -1,14 +1,16 @@
-export default async function editEmployeeFn (employee){
+import { Employee } from "../context/reducer";
+
+export default async function addEmployeeFn (employee: Employee){
   try {
-    let response = await fetch(`http://localhost:3004/employees/${employee.id}`, {
-      method: 'PATCH',
+    let response = await fetch('http://localhost:3004/employees', {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
+  
       body: JSON.stringify(employee)
     });
     let data = await response.json()
-    console.log(data)
     return data
     //return data
   } catch (error) {

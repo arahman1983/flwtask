@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { StateComp } from "./";
+import { StateComp } from ".";
 import { EmployeesCtx } from "../context/context";
 import { editEmployee } from "../context/actions";
 import {editEmployeeFn} from '../api'
 
-export default function EmployeeStateComp({employee}) {
+export default function EmployeeStateComp(props:any) {
   const {dispatchEmployeesArray} = useContext(EmployeesCtx)
 
   let empState = [
@@ -17,23 +17,24 @@ export default function EmployeeStateComp({employee}) {
 
 
   /// change state logic
-  const onChangeState = (id) => {
+  const onChangeState = (id: Number) => {
     console.log('change state', id)
     let updatedEmployee = {
-      ...employee,
+      ...props.employee,
       stateID: id
     }
     editEmployeeFn(updatedEmployee).then(data => 
-      dispatchEmployeesArray(editEmployee(data.id, {
-        stateID: data.stateID
-      }))
+    dispatchEmployeesArray(editEmployee(data.id, {stateID: data.stateID}))
+      // dispatchEmployeesArray(editEmployee(data.id, {
+      //   stateID: data.stateID
+      // }))
       )
   };
 
   return (
     <ul className="list-group list-group-horizontal-sm justify-content-end">
       {empState.map((status, index) => (
-        <StateComp key={index} status={status} activeId = {employee.stateID} onChangeState={onChangeState}/>
+        <StateComp key={index} status={status} activeId = {props.employee.stateID} onChangeState={onChangeState}/>
       ))}
     </ul>
   );

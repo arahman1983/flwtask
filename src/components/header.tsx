@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {FormModal} from './'
+import {FormModal} from '.'
 
 export default function FlwHeader() {
   const [show, setShow] = useState(false)

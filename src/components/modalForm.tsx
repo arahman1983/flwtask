@@ -3,18 +3,19 @@ import { Modal } from "react-bootstrap";
 import { EmployeesCtx } from "../context/context";
 import { addEmployee } from "../context/actions";
 import { addEmployeeFn } from "../api";
+import { Employee } from '../context/reducer';
 
-export default function FormModal({ handleHide, show }) {
+export default function FormModal(props: any) {
   const [employeeName, setEmployeeName] = useState("");
   const [nameValid, setNameValid] = useState(true);
   const { dispatchEmployeesArray } = useContext(EmployeesCtx);
 
   const handleClose = () => {
     setEmployeeName("");
-    handleHide();
+    props.handleHide();
   };
 
-  const employeeNameChange = (e) => {
+  const employeeNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNameValid(true);
     setEmployeeName(e.target.value);
   };
@@ -25,23 +26,27 @@ export default function FormModal({ handleHide, show }) {
       return;
     }
     ///// logic to add employee to the
-    let employee = { name: employeeName, stateID: 1 } 
-    addEmployeeFn(employee).then((data) =>
+    let employee = { name: employeeName, stateID: 1 }
+    addEmployeeFn(employee).then((data) => {
+      let newEmployee: Employee = {
+        id: data.id,
+        name: employeeName,
+        stateID: 1,
+      }
+
+
       dispatchEmployeesArray(
-        addEmployee({
-          id: data.id,
-          name: employeeName,
-          stateID: 1,
-        })
+        addEmployee(newEmployee)
       )
+    }
     );
 
     setEmployeeName("");
-    handleHide();
+    props.handleHide();
   };
 
   return (
-    <Modal show={show} onHide={handleClose} animation={false}>
+    <Modal show={props.show} onHide={handleClose} animation={false}>
       <Modal.Header closeButton>
         <Modal.Title>Add Employee</Modal.Title>
       </Modal.Header>
