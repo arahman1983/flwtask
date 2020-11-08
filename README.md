@@ -19,3 +19,6 @@ then you can run the server using this command
 ## `json-server --watch jsonServer/db.json --port 3004`
 
 it will run on  url [http://localhost:3004](http://localhost:3004) 
+
+## Type Script
+another version of the task using typescript
