@@ -18,6 +18,7 @@ export default function EmployeeStateComp({employee}) {
 
   /// change state logic
   const onChangeState = (id) => {
+    console.log('change state', id)
     let updatedEmployee = {
       ...employee,
       stateID: id
