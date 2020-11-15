@@ -9,7 +9,6 @@ export const editEmployee = (id, employee) => ({
   employee,
 });
 
-
 export const setEmployees = (employees) => ({
   type: "SET_EMPLOYEES",
   employees,
